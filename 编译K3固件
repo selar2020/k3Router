@@ -1,0 +1,32 @@
+需求
+1. 多拨（单线多拨，两个帐号）
+2. Samba 
+3. 去广告
+4. 科学上网
+//---------------------------
+//操作过程严格进行，否则会有各种状况。
+
+一、安装依赖（终端中输入）：
+sudo apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler curl
+
+
+二、下载源码 
+git clone https://github.com/coolsnowwolf/lede.git
+
+三、如果后期要更新本地git源码 
+git pull
+
+四、更新源码中引用源
+cd lede  #进入到下载的文件夹中
+./scripts/feeds update -a
+./scripts/feeds install -a
+或./scripts/feeds update -a && ./scripts/feeds install -a
+下载所有脚本和程序
+make download -j5
+
+五、测试编译环境
+make defconfig
+   根据屏幕信息补全安装所需依赖
+
+六、进入编译配置界面
+make menuconfig
