@@ -40,10 +40,16 @@ make defconfig
    
 六、进入编译配置界面
 make menuconfig
-七、
-make -j1 V=s或make V=s（单线程，非常慢）
-
-注意：-j1 后面是线程数。第一次编译推荐用单线程，国内请尽量全局兲朝上网。-j8还是j4根据你cpu内核定，我是9900k，直接8核编译，需时大概15-20min左右，即可编译好。生成的文件在openwet/bin/target/x86/64里面，openwrt-x86-64-combined-squashfs.img就是我们要的文件，以后升级我们可以在target images里打开gzip images，升级就用openwrt-x86-64-combined-squashfs.img.gz文件。
+七、编译
+1.  sed -i 's|^TARGET_|# TARGET_|g; s|# TARGET_DEVICES += phicomm-k3|TARGET_DEVICES += phicomm-k3|' target/linux/bcm53xx/image/Makefile
+只编译k3固件，没有这个指令编译了一个上午，得到很多固件。
+ 
+2. make -j1 V=s或make V=s（单线程，非常慢）
+注意：-j1 后面是线程数。
+第一次编译推荐用单线程，国内请尽量全局兲朝上网。-j8还是j4根据你cpu内核定，我是9900k，直接8核编译，需时大概15-20min左右，即可编译好。
+####################################################
+到此，可以得到固件在目录bin/target/...  
+若要两次编译，参看文章最后
 
 八、修改编译设置：
 
@@ -82,3 +88,13 @@ LUCI_DEPENDS:= \
 net.netfilter.nf_conntrack_max=65535#连接数
 
       TIPS:修改源码后重新编译需要删除build_dir目录跟staging_dir目录还有tmp目录。
+  
+  
+  另外：
+  第二次编译时：
+cd lede                                                           进入LEDE目录
+gitpull                                                           同步更新源码
+./scripts/feedsupdate -a && ./scripts/feeds install -a               更新FEEDS
+rm -rf ./tmp && rm -rf.config                                清除编译配置和缓存
+make menuconfig                                                进入编译配置菜单，根据需要修改
+make -jn V=s                          n=线程数+1，例如4线程的I5填-j5，开始编译
