@@ -1,0 +1,11 @@
+OFFICE手动激活
+#office 安装目录
+cd C:\Program Files\Microsoft Office\Office16
+cscript ospp.vbs /sethst:192.168.0.1(路由器地址)
+cscript ospp.vbs /act
+cscript ospp.vbs /dstatus
+
+WINDOWS手动激活
+slmgr.vbs /skms 192.168.0.1:1688
+slmgr.vbs /ato
+slmgr.vbs /xpr
