@@ -97,4 +97,5 @@ gitpull                                                           同步更新�
 ./scripts/feedsupdate -a && ./scripts/feeds install -a               更新FEEDS
 rm -rf ./tmp && rm -rf.config                                清除编译配置和缓存
 make menuconfig                                                进入编译配置菜单，根据需要修改
+sed -i 's|^TARGET_|# TARGET_|g; s|# TARGET_DEVICES += phicomm-k3|TARGET_DEVICES += phicomm-k3|' target/linux/bcm53xx/image/Makefile    只编译k3
 make -jn V=s                          n=线程数+1，例如4线程的I5填-j5，开始编译
