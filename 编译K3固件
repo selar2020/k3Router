@@ -41,10 +41,13 @@ make defconfig
 六、进入编译配置界面
 make menuconfig
 七、编译
-1.  sed -i 's|^TARGET_|# TARGET_|g; s|# TARGET_DEVICES += phicomm-k3|TARGET_DEVICES += phicomm-k3|' target/linux/bcm53xx/image/Makefile
-只编译k3固件，没有这个指令编译了一个上午，得到很多固件。
+1.预先下载dl库，可以避免下载造成的编译失败。
+make download V=s
+
+2.  sed -i 's|^TARGET_|# TARGET_|g; s|# TARGET_DEVICES += phicomm-k3|TARGET_DEVICES += phicomm-k3|' target/linux/bcm53xx/image/Makefile
+只编译k3固件.没有这个指令编译了一个上午，得到很多固件。
  
-2. make -j1 V=s或make V=s（单线程，非常慢）
+3. make -j1 V=s或make V=s（单线程，非常慢）
 注意：-j1 后面是线程数。
 第一次编译推荐用单线程，国内请尽量全局兲朝上网。-j8还是j4根据你cpu内核定，我是9900k，直接8核编译，需时大概15-20min左右，即可编译好。
 ####################################################
