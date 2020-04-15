@@ -1,0 +1,40 @@
+功能
+samba4 希望速度快些
+kms  服务
+科学上网
+Ftp 传文件
+流量监控
+多拨（单线两帐号）
+
+
+1. Target System BCM47XX/53XX(ARM)
+2. Target Profile(Phicomm K3)
+3. Extra packages
+ +automount 增加
+ -autosamba  去除
+ +k3wifi
+4. Utilities-->Disc 
+   +fdisk
+5. 
+
+LuCI ---> Applications ---> luci-app-accesscontrol  #访问时间控制
+LuCI ---> Applications ---> luci-app-adbyby-plus   #广告屏蔽大师Plus +
+LuCI ---> Applications ---> luci-app-advanced-reboot  #Linksys高级重启
+LuCI ---> Applications ---> luci-app-arpbind  #IP/MAC绑定
+LuCI ---> Applications ---> luci-app-autoreboot  #支持计划重启
+LuCI ---> Applications ---> luci-app-firewall   #添加防火墙
+LuCI ---> Applications ---> luci-app-mwan3   #MWAN3负载均衡
+LuCI ---> Applications ---> luci-app-mwan3helper   #MWAN3分流助手
+LuCI ---> Applications ---> luci-app-nlbwmon   #网络带宽监视器
+LuCI ---> Applications ---> luci-app-noddos  #NodDOS Clients 阻止DDoS攻击
+LuCI ---> Applications ---> luci-app-ramfree  #释放内存
+LuCI ---> Applications ---> luci-app-samba4   #网络共享（Samba4）
+LuCI ---> Applications ---> luci-app-乳酸菌饮料-plus   #乳酸菌饮料兲朝上网Plus+
+LuCI ---> Applications ---> luci-app-statistics  #流量监控工具
+LuCI ---> Applications ---> luci-app-syncdial  #多拨虚拟网卡（原macvlan）
+LuCI ---> Applications ---> luci-app-unblockneteasemusic-go  #解锁网易云歌曲   *
+LuCI ---> Applications ---> luci-app-upnp   #通用即插即用UPnP（端口自动转发）
+uCI ---> Applications ---> luci-app-vlmcsd  #KMS服务器设置
+LuCI ---> Applications ---> luci-app-vnstat   #vnStat网络监控（图表）
+LuCI ---> Applications ---> luci-app-vsftpd  #FTP服务器
+LuCI ---> Applications ---> luci-app-wrtbwmon  #实时流量监测
