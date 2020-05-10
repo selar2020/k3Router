@@ -1,0 +1,3 @@
+修改index.htm文件显示温度在 lede/feeds/luci/modules/luci-mod-admin-full/luasrc/view/admin_status
+找到关键字 Kernel Version 定位，在下方加一行，格式相似
+<tr><td width="33%"><%:CPU Temperature%></td><td><%=luci.sys.exec("cut -c1-2 /sys/class/thermal/thermal_zone0/temp")%></td></tr>
